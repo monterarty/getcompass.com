@@ -1,17 +1,73 @@
-.is--copy-done .is--copy-done-icon {
-	transform: scale(1);
-	opacity: 1
-}
+/* --------------------------*/
+/* --------------------------*/
+/*       styles-v5.css       */
+/* --------------------------*/
+/* --------------------------*/
 
-.is--copy-done .is--copy-initital-icon {
-	transform: scale(.5);
-	opacity: 0
-}
+.cta__dd-list-other-wrap {display:none}
+.is--mac .cta__dd-list-other-wrap,
+.is--linux .cta__dd-list-other-wrap,
+.is--windows .cta__dd-list-other-wrap {display:block;}
+.cta__dd-list-other-wrap.is--open{max-height:.7rem}
+.w-nav .cta__dd-list-other-wrap.is--open{max-height:.88rem}
+.w-nav .cta__dd-list-other-wrap::before{left:.3rem;right:.3rem}
+.cta__dd-list-other-wrap.is--open::before {opacity:1}
+.cta__dd-list-other-wrap.is--open .cta__list-item{opacity:0;pointer-events:none}
+
+.is--mac .cta__dd-list-wrap .cta__list-item-wrap:nth-child(4),
+.is--mac .cta__dd-list-wrap .cta__list-item-wrap:nth-child(5),
+.is--windows .cta__dd-list-wrap .cta__list-item-wrap:nth-child(2),
+.is--windows .cta__dd-list-wrap .cta__list-item-wrap:nth-child(3),
+.is--windows .cta__dd-list-wrap .cta__list-item-wrap:nth-child(5),
+.is--linux .cta__dd-list-wrap .cta__list-item-wrap:nth-child(2),
+.is--linux .cta__dd-list-wrap .cta__list-item-wrap:nth-child(3),
+.is--linux .cta__dd-list-wrap .cta__list-item-wrap:nth-child(4){max-height:0;opacity:0}
+
+.is--mac .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(4),
+.is--mac .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(5),
+.is--windows .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(2),
+.is--windows .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(3),
+.is--windows .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(5),
+.is--linux .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(2),
+.is--linux .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(3),
+.is--linux .cta__dd-list-wrap .is--open ~ .cta__list-item-wrap:nth-child(4){max-height:5rem;opacity:1}
+
+.cta__dd-list-wrap div:nth-child(1) {order: 3}
+.cta__dd-list-wrap div:nth-child(2) {order: 4}
+.cta__dd-list-wrap div:nth-child(3) {order: 5}
+.cta__dd-list-wrap div:nth-child(4) {order: 1}
+.cta__dd-list-wrap div:nth-child(5) {order: 2}
+
+.is--mac .cta__dd-list-wrap div:nth-child(1) {order: 3}
+.is--mac .cta__dd-list-wrap div:nth-child(2) {order: 1}
+.is--mac .cta__dd-list-wrap div:nth-child(3) {order: 2}
+.is--mac .cta__dd-list-wrap div:nth-child(4) {order: 4}
+.is--mac .cta__dd-list-wrap div:nth-child(5) {order: 5}
+
+.is--windows .cta__dd-list-wrap div:nth-child(1) {order: 2}
+.is--windows .cta__dd-list-wrap div:nth-child(2) {order: 4}
+.is--windows .cta__dd-list-wrap div:nth-child(3) {order: 5}
+.is--windows .cta__dd-list-wrap div:nth-child(4) {order: 1}
+.is--windows .cta__dd-list-wrap div:nth-child(5) {order: 3}
+
+.is--linux .cta__dd-list-wrap div:nth-child(1) {order: 2}
+.is--linux .cta__dd-list-wrap div:nth-child(2) {order: 4}
+.is--linux .cta__dd-list-wrap div:nth-child(3) {order: 5}
+.is--linux .cta__dd-list-wrap div:nth-child(4) {order: 3}
+.is--linux .cta__dd-list-wrap div:nth-child(5) {order: 1}
+
+.is--windows .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(1),
+.is--linux .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(1) {order: 1;max-height:5rem;opacity:1}
+.is--windows .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(2),
+.is--linux .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(2) {order: 2;max-height:5rem;opacity:1}
+.is--mac .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(1) {order: 1}
+.is--mac .cta__dd-mac-list .cta__dd-list-wrap div:nth-child(2) {order: 2}
+
+.is--copy-done .is--copy-done-icon {transform: scale(1);opacity: 1}
+.is--copy-done .is--copy-initital-icon {transform: scale(.5);opacity: 0}
 
 .article__mobile-content,
-.is--ajax-load-btn .navbar__button-icon {
-	display: none
-}
+.is--ajax-load-btn .navbar__button-icon {display: none}
 
 .article__content figure:last-child:not(.article__desctop-content figure, .article__mobile-content figure),
 .article__desctop-content:last-child figure,
@@ -77,28 +133,14 @@ input.input-error {
 }
 
 .remodal,
-.remodal-wrapper:after {
-	vertical-align: top
-}
+.remodal-wrapper:after{vertical-align:top}
 
-html.remodal-is-locked body {
-	overflow: hidden;
-	-ms-touch-action: none;
-	touch-action: none
-}
-
+html.remodal-is-locked body {overflow: hidden;-ms-touch-action: none;touch-action: none}
 .popup__scroll-content,
-.remodal {
-	max-height: calc(100vh - 4.66rem);
-	-webkit-overflow-scrolling: touch;
-	-ms-overflow-style: none;
-	scrollbar-width: none
-}
+.remodal {max-height: calc(100vh - 4.66rem);-webkit-overflow-scrolling: touch;-ms-overflow-style: none;scrollbar-width: none}
 
 .is--center-modal .remodal,
-.is--center-modal .remodal-wrapper:after {
-	vertical-align: middle
-}
+.is--center-modal .remodal-wrapper:after{vertical-align:middle}
 
 .remodal-overlay {
 	background: rgba(4, 4, 10, .8);
@@ -119,6 +161,14 @@ html.remodal-is-locked body {
 
 .is--touch-device .price__calc-button:hover {
 	background-color: rgba(103, 115, 128, .05)
+}
+
+.is--touch-device .cta__list-item:hover {
+    background-color:transparent;
+}
+
+.is--touch-device .cta__list-item:active {
+    background-color: #f8f8f8;
 }
 
 .blog-footer__link--store:hover .blog-footer__link-text,
@@ -373,6 +423,8 @@ html * {
 }
 
 @media (max-width:767px) {
+    .cta__dd-list-wrap::before{margin-left:-.5rem;border-left-width:.5rem;border-right-width:.5rem;border-bottom-width:.83rem;top:-.75rem}
+    .cta__dd-list-wrap::before{left: calc( var(--arrowLeft) - 2rem )}
 
 	.article__content figure:last-child:not(.article__desctop-content figure, .article__mobile-content figure),
 	.article__desctop-content:last-child figure,
