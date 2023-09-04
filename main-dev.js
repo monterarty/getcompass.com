@@ -1,9 +1,8 @@
 /* ------------------------*/
 /* ------------------------*/
-/*      main-v4-en.js      */
+/*      main-v5-en.js      */
 /* ------------------------*/
 /* ------------------------*/
-
 function showOldBrowserMsg() {
 	const oldMsg = document.querySelector('.navbar__old-msg');
 	if (oldMsg) {
@@ -145,18 +144,6 @@ if (['iOS', 'Android', 'Huawei'].indexOf(os) + 1) {
 				location.href = $(this).find('.playmarket').attr('href');
 				$('body').addClass('is--android');
 				break;
-			case 'Windows':
-				ym(ymetrikaID, 'reachGoal', '15');
-				location.href = $(this).find('.win').attr('href');
-				break;
-			case 'Linux':
-				ym(ymetrikaID, 'reachGoal', '17');
-				location.href = $(this).find('.linux').attr('href');
-				break;
-			case 'macOS':
-				ym(ymetrikaID, 'reachGoal', '16');
-				location.href = $(this).find('.mac').attr('href');
-				break;
 			case 'Huawei':
 				ym(ymetrikaID, 'reachGoal', '13');
 				location.href = $(this).find('.huawei').attr('href');
@@ -164,6 +151,28 @@ if (['iOS', 'Android', 'Huawei'].indexOf(os) + 1) {
 				break;
 		}
 	})
+}
+
+//Определеяем систему и добавляем класс в body
+switch (os) {
+	case 'iOS':
+		$('body').addClass('is--ios');
+		break;
+	case 'Android':
+		$('body').addClass('is--android');
+		break;
+	case 'Windows':
+              $('body').addClass('is--windows');
+		break;
+	case 'Linux':
+              $('body').addClass('is--linux');
+		break;
+	case 'OS X':
+              $('body').addClass('is--mac');
+		break;
+	case 'Huawei':
+		$('body').addClass('is--android');
+		break;
 }
 
 // Маска для инпутов (телефон)
@@ -570,28 +579,21 @@ tarifDown.on('click', function () {
 	}
 })
 
-$('.tooltip').each(function () {
-	$content = $(this).data('tooltip-content');
-	tippy(this, {
-		content: $content,
-		hideOnClick: true,
-		trigger: "mouseenter focus click",
-		maxWidth: 'none',
-		allowHTML: true,
-		zIndex: 999,
-		popperOptions: {
-			modifiers: [
-				{
-					name: 'flip',
-					options: {
-						padding: 80,
-						flipVariations: false, // true by default
-					},
-                },
-            ]
-		}
-	});
-})
+/* Set center mobile mac dropdown list */
+const setCenterVendorMacList = () => {
+    const vendorMacDD = document.querySelectorAll('.is--mac-dropdown');
+    vendorMacDD.forEach(dropdown => {
+        const vendorMacDdRect = dropdown.getBoundingClientRect();
+        const vendorMacDDList = dropdown.querySelector('.w-dropdown-list');
+            if (window.innerWidth < 768) {
+                vendorMacDDList.style.left = `-${vendorMacDdRect.x}px`;
+                vendorMacDDList.style.setProperty('--arrowLeft', `${vendorMacDdRect.x + vendorMacDdRect.width / 2}px`);
+            } else {
+                vendorMacDDList.style.removeProperty('left');
+                vendorMacDDList.style.removeProperty('--arrowLeft');
+            }
+    })
+}
 
 $('.form__success-button, .form__button-close').on('click', function () {
 	var successButton = $(this);
@@ -1172,6 +1174,7 @@ function getScrollPercentage() {
 }
 
 window.addEventListener("resize", (event) => {
+    setCenterVendorMacList();
 	if ($(window).width() > 767) {
 		$('.w-tab-content').each(function () {
 			$(this).removeAttr('style');
@@ -1199,6 +1202,7 @@ window.addEventListener("scroll", (event) => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    setCenterVendorMacList();
 	setTimeout(function () {
 		//Пользователь на сайте больше минуты
 		ym(ymetrikaID, 'reachGoal', '4');
