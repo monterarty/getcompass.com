@@ -175,6 +175,16 @@ switch (os) {
 		break;
 }
 
+//Скрываем кнопку при клике на другие платформы
+$('.cta__list-other-button').on('click', function() {
+    $(this).parent().addClass('is--open');
+});
+
+//Возвращаем к исходному состоянию
+$('.cta__dd_bn, .bn__dropdown-sml').on('click', function() {
+    $('.cta__dd-list-other-wrap').removeClass('is--open');
+})
+
 // Маска для инпутов (телефон)
 function addInputPhoneMask() {
 	const phoneInputs = document.querySelectorAll("input[data-tel-input]");
@@ -514,70 +524,10 @@ $('.switch__slider').on('click', function () {
 	$(this).closest('.price__wrapper').toggleClass('is--monthly');
 })
 
-var tarifPrice = $('.tarif__price'),
-	members = $('.price__calc-count'),
-	tarifUp = $('.price__plus'),
-	tarifDown = $('.price__minus'),
-	tarifWrapper = $('.price__block.is--center'),
-	index = 0,
-	prices = [
-    ["20", "119"],
-    ["30", "179"],
-    ["50", "299"],
-    ["80", "539"],
-    ["100", "719"],
-    ["150", "719"],
-	["200", "719"],
-	["300", "719"],
-	["400", "719"],
-	["500", "719"]
-  ]
+$('.cta__list-item:not(.cta__list-other-button)').on('click', function() {
+    $(".w-dropdown").trigger("w-close");
+});
 
-tarifUp.on('click', function () {
-	if (!$(this).hasClass('is--disable')) {
-		index = index + 1 > prices.length - 1 ? prices.length - 1 : index + 1;
-		members.html(prices[index][0]);
-		tarifPrice.html(prices[index][1]);
-		if (index == prices.length - 1) {
-			$(this).addClass('is--disable');
-		} else {
-			$(this).removeClass('is--disable');
-		}
-		if (index < 1) {
-			tarifDown.addClass('is--disable');
-		} else {
-			tarifDown.removeClass('is--disable');
-		}
-		if (index > 4) {
-			tarifWrapper.addClass('is--more-150');
-		} else {
-			tarifWrapper.removeClass('is--more-150');
-		}
-	}
-})
-
-tarifDown.on('click', function () {
-	if (!$(this).hasClass('is--disable')) {
-		index = index - 1 < 1 ? 0 : index - 1;
-		members.html(prices[index][0]);
-		tarifPrice.html(prices[index][1]);
-		if (index == prices.length - 1) {
-			tarifUp.addClass('is--disable');
-		} else {
-			tarifUp.removeClass('is--disable');
-		}
-		if (index < 1) {
-			tarifDown.addClass('is--disable');
-		} else {
-			tarifDown.removeClass('is--disable');
-		}
-		if (index > 4) {
-			tarifWrapper.addClass('is--more-150');
-		} else {
-			tarifWrapper.removeClass('is--more-150');
-		}
-	}
-})
 
 /* Set center mobile mac dropdown list */
 const setCenterVendorMacList = () => {
@@ -764,6 +714,8 @@ var clipboard = new ClipboardJS('[build-link]', {
 
 clipboard.on('success', function (e) {
 	showCopyNote();
+    if ($('.is--mac-dropdown.w-dropdown .w--open').length)
+        $('.is--mac-dropdown.w-dropdown .w--open').trigger('click');
 	e.clearSelection();
 });
 
@@ -1339,7 +1291,7 @@ $('.ddown__link-sml.win, .cta__list-item.win, .logo-vendor__item.win').on('click
 	ym(ymetrikaID, 'reachGoal', '51'); //Переход в стор
 });
 
-$('.ddown__link-sml.mac, .cta__list-item.mac, .logo-vendor__item.mac').on('click', function () {
+$('.cta__list-item.mac-apple, .cta__list-item.mac-intel, .logo-vendor__item.mac').on('click', function () {
 	//console.log('Идентификатор 16'); //mac
 	ym(ymetrikaID, 'reachGoal', '16');
 	ym(ymetrikaID, 'reachGoal', '51'); //Переход в стор
